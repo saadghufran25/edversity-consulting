@@ -1,0 +1,235 @@
+.hero {
+  padding-block: var(--hero-space) clamp(3.5rem, 7vw, 6rem);
+  position: relative;
+  overflow: clip;
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.94), rgba(247, 241, 255, 0.88) 52%, rgba(241, 235, 255, 0.84)),
+    radial-gradient(980px 500px at 90% 0, rgba(20, 3, 66, 0.12), rgba(20, 3, 66, 0));
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(1px);
+}
+
+.hero::before {
+  width: 30rem;
+  height: 30rem;
+  right: -12rem;
+  top: -12rem;
+  background: radial-gradient(circle, rgba(20, 3, 66, 0.26), rgba(20, 3, 66, 0));
+  animation: heroOrbFloat 9s ease-in-out infinite alternate;
+}
+
+.hero::after {
+  width: 24rem;
+  height: 24rem;
+  left: -8rem;
+  bottom: -11rem;
+  background: radial-gradient(circle, rgba(244, 163, 29, 0.14), rgba(244, 163, 29, 0));
+  animation: heroOrbFloat 8s ease-in-out infinite alternate-reverse;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 7vw, 4.8rem);
+  letter-spacing: -0.04em;
+  line-height: 0.96;
+  font-weight: 700;
+  color: var(--color-primary-strong);
+  text-shadow: 0 10px 34px rgba(20, 3, 66, 0.18);
+}
+
+.hero-kicker {
+  margin-top: 1rem;
+  font-size: clamp(1.15rem, 2.1vw, 1.45rem);
+  line-height: 1.45;
+  color: #2c1c5f;
+  max-width: 35ch;
+  font-weight: 500;
+}
+
+.hero-copy .section-lead {
+  margin-top: 1rem;
+}
+
+.hero-panel {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.hero-panel .card {
+  background: linear-gradient(160deg, #ffffff, #f7f2ff);
+  border-color: rgba(20, 3, 66, 0.14);
+}
+
+.page-hero {
+  padding-block: clamp(3.75rem, 8vw, 6rem) clamp(2.6rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--color-border);
+  background:
+    linear-gradient(160deg, #ffffff, #f8f2ff 44%, #f2eaff),
+    radial-gradient(760px 380px at 100% 0, rgba(20, 3, 66, 0.12), rgba(20, 3, 66, 0));
+}
+
+.page-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1.04;
+}
+
+.page-hero p {
+  margin-top: 1rem;
+  max-width: 65ch;
+}
+
+.trust-strip {
+  margin-top: -1.8rem;
+}
+
+.section-alt {
+  background:
+    linear-gradient(180deg, #ffffff, #fcf8ff),
+    radial-gradient(640px 260px at 4% 100%, rgba(20, 3, 66, 0.09), rgba(20, 3, 66, 0));
+}
+
+.package-highlight {
+  border-color: rgba(20, 3, 66, 0.45);
+  background: linear-gradient(160deg, #ffffff, #f4ecff);
+  box-shadow: 0 24px 48px rgba(20, 3, 66, 0.2);
+}
+
+.package-highlight .pill {
+  border-color: rgba(244, 163, 29, 0.6);
+  color: var(--color-royal-dark);
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.faq-item {
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 0.92rem 1rem;
+  background: linear-gradient(150deg, #ffffff, #fcf8ff);
+}
+
+.faq-item h3 {
+  font-size: 1.02rem;
+}
+
+.faq-item p {
+  margin-top: 0.48rem;
+  color: #332260;
+  line-height: 1.55;
+}
+
+.steps-note {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.2rem;
+  background: linear-gradient(130deg, #f8f2ff, #f3ecff);
+  color: #2e1d60;
+  box-shadow: 0 12px 30px rgba(20, 3, 66, 0.09);
+}
+
+.testimonial-headline {
+  max-width: 48ch;
+}
+
+.apply-intro {
+  margin-bottom: 1.2rem;
+}
+
+.apply-intro p {
+  margin-top: 0.7rem;
+}
+
+.review-note {
+  margin-top: 0.8rem;
+  color: #38276b;
+  font-size: 0.92rem;
+}
+
+.map-placeholder {
+  display: grid;
+  gap: 1rem;
+}
+
+.about-intro-grid {
+  align-items: stretch;
+}
+
+.about-intro-grid > .card {
+  height: 100%;
+}
+
+.about-approach-card {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: clamp(0.9rem, 1.8vw, 1.25rem);
+  padding: clamp(1.35rem, 2.7vw, 2.35rem);
+}
+
+.about-approach-card .section-title {
+  max-width: 12ch;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-size: clamp(2rem, 4vw, 3.75rem);
+}
+
+.about-approach-card .list-plain {
+  width: 100%;
+  max-width: 56ch;
+  gap: 0.78rem;
+}
+
+.about-approach-card .list-plain li {
+  line-height: 1.45;
+  font-size: clamp(1.05rem, 1.8vw, 1.22rem);
+  color: #22164a;
+}
+
+.about-approach-card .btn {
+  align-self: flex-start;
+}
+
+@media (max-width: 900px) {
+  .about-approach-card .section-title {
+    max-width: 100%;
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+}
+
+@keyframes heroOrbFloat {
+  from {
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    transform: translateY(-22px) scale(1.06);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-strip {
+    margin-top: -1rem;
+  }
+}

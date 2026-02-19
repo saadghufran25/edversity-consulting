@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apply to Edversity Consulting with a structured multi-step form for admissions and visa support.">
+    <title>Apply Now | Edversity Consulting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div id="site-nav"></div>
+
+    <main id="main-content">
+      <section class="page-hero">
+        <div class="container stack-4" data-animate>
+          <p class="eyebrow">Apply Now</p>
+          <h1>Start your admissions plan with our structured multi-step application.</h1>
+          <p class="section-lead">Share your profile details and we will guide your next steps with strategy and precision.</p>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container stack-6">
+          <div class="apply-intro" data-animate>
+            <h2 class="section-title">Required Student Information</h2>
+            <p class="section-lead">
+              Complete all sections carefully. This helps us evaluate fit, build your roadmap, and recommend the right consulting scope.
+            </p>
+          </div>
+
+          <div class="steps-note" data-animate>
+            Sections included: Personal Info, Academic Readiness, Financial Capacity, Goals and Commitment, and final review.
+          </div>
+
+          <div class="form-shell" data-animate>
+            <form id="apply-form" novalidate enctype="multipart/form-data">
+              <div class="form-progress" aria-label="Application progress">
+                <div class="progress-step is-active">Personal</div>
+                <div class="progress-step">Academic</div>
+                <div class="progress-step">Budget</div>
+                <div class="progress-step">Goals</div>
+                <div class="progress-step">Review</div>
+              </div>
+
+              <section class="form-step is-active" aria-label="Section 1 Personal Info">
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="fullName"><img src="assets/icons/user.svg" alt="" aria-hidden="true">Full Name</label>
+                    <input id="fullName" name="fullName" type="text" autocomplete="name" maxlength="80" placeholder="Enter your full name">
+                    <p class="error-message" data-error-for="fullName"></p>
+                  </div>
+
+                  <div class="field">
+                    <label for="whatsappNumber"><img src="assets/icons/phone.svg" alt="" aria-hidden="true">WhatsApp Number (with country code)</label>
+                    <input id="whatsappNumber" name="whatsappNumber" type="tel" autocomplete="tel" inputmode="tel" pattern="^\+[1-9]\d{7,14}$" maxlength="16" placeholder="+923001234567">
+                    <p class="error-message" data-error-for="whatsappNumber"></p>
+                  </div>
+
+                  <div class="field">
+                    <label for="cityResidence"><img src="assets/icons/location.svg" alt="" aria-hidden="true">City of Residence</label>
+                    <input id="cityResidence" name="cityResidence" type="text" autocomplete="address-level2" maxlength="60" placeholder="City">
+                    <p class="error-message" data-error-for="cityResidence"></p>
+                  </div>
+
+                  <div class="field">
+                    <label for="educationLevel"><img src="assets/icons/education.svg" alt="" aria-hidden="true">Education Level</label>
+                    <select id="educationLevel" name="educationLevel">
+                      <option value="">Select education level</option>
+                      <option>Intermediate / A Levels</option>
+                      <option>Bachelor's</option>
+                      <option>Master's</option>
+                      <option>Other</option>
+                    </select>
+                    <p class="error-message" data-error-for="educationLevel"></p>
+                  </div>
+
+                  <div class="field">
+                    <label for="currentCgpa"><img src="assets/icons/score.svg" alt="" aria-hidden="true">Current CGPA / Percentage</label>
+                    <input id="currentCgpa" name="currentCgpa" type="text" maxlength="30" placeholder="e.g. 3.6 CGPA / 82%">
+                    <p class="error-message" data-error-for="currentCgpa"></p>
+                  </div>
+
+                  <div class="field">
+                    <label for="currentUniversity"><img src="assets/icons/university.svg" alt="" aria-hidden="true">Current University</label>
+                    <input id="currentUniversity" name="currentUniversity" type="text" maxlength="120" placeholder="University name">
+                    <p class="error-message" data-error-for="currentUniversity"></p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="form-step" aria-label="Section 2 Academic Readiness">
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="graduationYear"><img src="assets/icons/calendar.svg" alt="" aria-hidden="true">Year of Graduation</label>
+                    <input id="graduationYear" name="graduationYear" type="number" min="2020" max="2035" step="1" inputmode="numeric" placeholder="e.g. 2027">
+                    <p class="error-message" data-error-for="graduationYear"></p>
+                  </div>
+
+                  <div class="field field-full">
+                    <label for="englishProficiency"><img src="assets/icons/language.svg" alt="" aria-hidden="true">English Proficiency (IELTS/PTE score or test plan)</label>
+                    <input id="englishProficiency" name="englishProficiency" type="text" maxlength="120" placeholder="IELTS 7.0 / Planning test in June 2026">
+                    <p class="error-message" data-error-for="englishProficiency"></p>
+                  </div>
+
+                  <div class="field field-full">
+                    <label for="intake"><img src="assets/icons/calendar.svg" alt="" aria-hidden="true">Intake</label>
+                    <select id="intake" name="intake">
+                      <option value="">Select intake</option>
+                      <option>Sept 2026</option>
+                      <option>Jan-Feb 2027</option>
+                      <option>Exploring</option>
+                    </select>
+                    <p class="error-message" data-error-for="intake"></p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="form-step" aria-label="Section 3 Financial Capacity">
+                <div class="form-grid">
+                  <div class="field field-full group-field" data-group-field="budget">
+                    <label><img src="assets/icons/budget.svg" alt="" aria-hidden="true">Annual Tuition Budget</label>
+                    <div class="choice-grid" role="radiogroup" aria-label="Annual tuition budget">
+                      <label class="choice"><input type="radio" name="budget" value="Under $30,000">Under $30,000</label>
+                      <label class="choice"><input type="radio" name="budget" value="$30,000-$50,000">$30,000-$50,000</label>
+                      <label class="choice"><input type="radio" name="budget" value="$50,000-$80,000">$50,000-$80,000</label>
+                    </div>
+                    <p class="error-message" data-error-for="budget"></p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="form-step" aria-label="Section 4 Goals and Commitment">
+                <div class="form-grid">
+                  <div class="field field-full group-field" data-group-field="destinations">
+                    <label><img src="assets/icons/globe.svg" alt="" aria-hidden="true">Preferred destinations</label>
+                    <div class="choice-grid">
+                      <label class="choice"><input type="checkbox" name="destinations" value="UK">UK</label>
+                      <label class="choice"><input type="checkbox" name="destinations" value="USA">USA</label>
+                      <label class="choice"><input type="checkbox" name="destinations" value="Canada">Canada</label>
+                      <label class="choice"><input type="checkbox" name="destinations" value="Australia">Australia</label>
+                      <label class="choice"><input type="checkbox" name="destinations" value="Italy">Italy</label>
+                      <label class="choice"><input type="checkbox" name="destinations" value="Other">Other</label>
+                    </div>
+                    <p class="error-message" data-error-for="destinations"></p>
+                  </div>
+
+                  <div class="field field-full">
+                    <label for="supportType"><img src="assets/icons/support.svg" alt="" aria-hidden="true">Type of support needed</label>
+                    <select id="supportType" name="supportType">
+                      <option value="">Select support type</option>
+                      <option>Core Placement Program</option>
+                      <option>Complete Package</option>
+                      <option>Visa Advisory</option>
+                      <option>Bespoke SOP Writing</option>
+                      <option>Not sure yet - need recommendation</option>
+                    </select>
+                    <p class="error-message" data-error-for="supportType"></p>
+                  </div>
+
+                  <div class="field field-full">
+                    <label for="careerGoals"><img src="assets/icons/target.svg" alt="" aria-hidden="true">Career goals</label>
+                    <textarea id="careerGoals" name="careerGoals" minlength="40" maxlength="1200" placeholder="Briefly describe your long-term career goals."></textarea>
+                    <p class="error-message" data-error-for="careerGoals"></p>
+                  </div>
+
+                  <div class="field field-full">
+                    <label for="cvFile"><img src="assets/icons/upload.svg" alt="" aria-hidden="true">Upload CV</label>
+                    <input id="cvFile" name="cvFile" type="file" accept=".pdf,.doc,.docx">
+                    <p class="field-hint" id="cv-file-name">No file selected</p>
+                    <p class="error-message" data-error-for="cvFile"></p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="form-step" aria-label="Review your application">
+                <h3>Review your details before final submission</h3>
+                <p class="review-note">Please confirm everything is accurate. You can go back to edit any section.</p>
+                <div class="review-grid">
+                  <article class="review-item"><h4>Full Name</h4><p data-review="fullName">-</p></article>
+                  <article class="review-item"><h4>WhatsApp</h4><p data-review="whatsappNumber">-</p></article>
+                  <article class="review-item"><h4>City</h4><p data-review="cityResidence">-</p></article>
+                  <article class="review-item"><h4>Education Level</h4><p data-review="educationLevel">-</p></article>
+                  <article class="review-item"><h4>CGPA / Percentage</h4><p data-review="currentCgpa">-</p></article>
+                  <article class="review-item"><h4>Current University</h4><p data-review="currentUniversity">-</p></article>
+                  <article class="review-item"><h4>Graduation Year</h4><p data-review="graduationYear">-</p></article>
+                  <article class="review-item"><h4>English Proficiency</h4><p data-review="englishProficiency">-</p></article>
+                  <article class="review-item"><h4>Intake</h4><p data-review="intake">-</p></article>
+                  <article class="review-item"><h4>Budget</h4><p data-review="budget">-</p></article>
+                  <article class="review-item"><h4>Destinations</h4><p data-review="destinations">-</p></article>
+                  <article class="review-item"><h4>Support Needed</h4><p data-review="supportType">-</p></article>
+                  <article class="review-item"><h4>Career Goals</h4><p data-review="careerGoals">-</p></article>
+                  <article class="review-item"><h4>Uploaded CV</h4><p data-review="cvFileName">-</p></article>
+                </div>
+              </section>
+
+              <div class="form-actions">
+                <button type="button" class="btn btn-secondary" data-action="back">Back</button>
+                <button type="button" class="btn btn-primary" data-action="next">Continue</button>
+              </div>
+              <p class="form-submit-status" data-submit-status hidden aria-live="polite"></p>
+            </form>
+
+            <section id="form-confirmation" class="form-confirmation" hidden aria-live="polite">
+              <h3>Application received successfully</h3>
+              <p>
+                Thank you, <strong data-confirm-name>Applicant</strong>. Your profile has been received and our team will reach out on
+                WhatsApp with next steps.
+              </p>
+              <ul class="list-plain" style="margin-top: 1rem;">
+                <li><strong>Intake:</strong> <span data-confirm-intake>-</span></li>
+                <li><strong>Budget:</strong> <span data-confirm-budget>-</span></li>
+              </ul>
+              <div class="cta-row" style="margin-top: 1.1rem;">
+                <a class="btn btn-primary" href="apply.html">Apply Now</a>
+                <a class="btn btn-secondary" href="index.html">Back to Home</a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="mobile-cta"></div>
+    <div id="site-footer"></div>
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/apply-form.js"></script>
+  </body>
+</html>

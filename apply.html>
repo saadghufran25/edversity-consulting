@@ -1,0 +1,6 @@
+4:  const navItems = [
+9:    { href: "https://www.edversity.com.pk", label: "Visit Edversity", external: true }
+115:    const officeEmail = config.officeEmail || "consulting@edversity.com.pk";
+126:      '        <div class="footer-social">' +
+136:      '        <li><a href="https://www.edversity.com.pk" target="_blank" rel="noopener noreferrer">Visit Edversity</a></li>' +
+181:    const officeEmail = config.officeEmail || "consulting@edversity.com.pk";
