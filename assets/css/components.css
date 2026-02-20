@@ -983,6 +983,8 @@
   color: #28195b;
   margin-top: 0.35rem;
   line-height: 1.45;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .form-confirmation {
