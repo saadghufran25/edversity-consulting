@@ -144,6 +144,15 @@
 
 .mobile-nav .btn {
   margin-top: 0.6rem;
+  display: inline-flex;
+  width: 100%;
+  padding: 0.72rem 1rem;
+}
+
+.mobile-nav .btn-primary,
+.mobile-nav .btn-primary:hover,
+.mobile-nav .btn-primary:focus-visible {
+  color: #ffffff;
 }
 
 .btn {
@@ -677,7 +686,7 @@
   right: 0.8rem;
   bottom: calc(0.6rem + env(safe-area-inset-bottom));
   z-index: 1300;
-  display: none;
+  display: none !important;
   box-shadow: 0 18px 36px rgba(20, 3, 66, 0.4);
 }
 
@@ -1064,10 +1073,6 @@
 }
 
 @media (max-width: 768px) {
-  .mobile-apply {
-    display: inline-flex;
-  }
-
   .progress-step {
     font-size: 0.68rem;
     padding: 0.55rem 0.3rem;

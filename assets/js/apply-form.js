@@ -123,8 +123,13 @@
     },
     englishProficiency: function (value) {
       const normalized = normalizeText(value).toLowerCase();
+      // Optional field: allow empty value.
+      if (!normalized) {
+        return true;
+      }
+
       if (normalized.length < 3) {
-        return "Please share IELTS/PTE details or your test plan.";
+        return "Please enter a valid IELTS/PTE detail or leave this field blank.";
       }
 
       const ieltsMatch = normalized.match(/ielts\s*[:\-]?\s*(\d(?:\.\d)?)/);
@@ -403,7 +408,7 @@
 
     const config = window.EDVERSITY_CONFIG || {};
     const submitEndpoint =
-      config.formSubmitEndpoint || "https://formsubmit.co/ajax/consulting@edversity.com.pk";
+      config.formSubmitEndpoint || "https://formsubmit.co/consulting@edversity.com.pk";
     const steps = Array.from(form.querySelectorAll(".form-step"));
     const progressSteps = Array.from(form.querySelectorAll(".progress-step"));
     const nextButton = form.querySelector('[data-action="next"]');
@@ -534,20 +539,36 @@
         const response = await fetch(submitEndpoint, {
           method: "POST",
           headers: {
-            Accept: "application/json"
+            Accept: "application/json, text/html"
           },
           body: formData
         });
 
-        const result = await response.json().catch(function () {
-          return {};
-        });
+        const contentType = (response.headers.get("content-type") || "").toLowerCase();
+        let isSuccess = false;
+        let serverMessage = "";
 
-        const isSuccess = response.ok && String(result.success).toLowerCase() === "true";
+        if (contentType.includes("application/json")) {
+          const result = await response.json().catch(function () {
+            return {};
+          });
+          isSuccess = response.ok && String(result.success).toLowerCase() === "true";
+          serverMessage = String(result.message || "");
+        } else {
+          const htmlText = await response.text();
+          isSuccess = response.ok && /submitted successfully/i.test(htmlText);
+
+          if (/open this page through a web server/i.test(htmlText)) {
+            serverMessage = "Make sure you open this page through a web server";
+          } else if (/confirm your email/i.test(htmlText) || /activate/i.test(htmlText)) {
+            serverMessage = "Please confirm your email address";
+          } else if (!isSuccess) {
+            serverMessage = "Submission could not be completed.";
+          }
+        }
+
         if (!isSuccess) {
-          const message =
-            result.message ||
-            "Submission could not be completed. Please try again in a moment.";
+          const message = serverMessage || "Submission could not be completed. Please try again in a moment.";
           throw new Error(message);
         }
       } catch (error) {

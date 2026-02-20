@@ -1,8 +1,8 @@
 window.EDVERSITY_CONFIG = Object.freeze({
   officeEmail: "consulting@edversity.com.pk",
   whatsAppUrl: "https://wa.me/923452427960",
-  bookingUrl: "apply.html",
-  formSubmitEndpoint: "https://formsubmit.co/ajax/consulting@edversity.com.pk",
+  bookingUrl: "/apply/",
+  formSubmitEndpoint: "https://formsubmit.co/consulting@edversity.com.pk",
   socialLinks: {
     instagram: "https://instagram.com/edversity.consulting",
     linkedin: "https://www.linkedin.com/company/edversity-consulting"

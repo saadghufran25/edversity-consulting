@@ -2,25 +2,47 @@
   const config = window.EDVERSITY_CONFIG || {};
 
   const navItems = [
-    { href: "index.html", label: "Home" },
-    { href: "about.html", label: "About" },
-    { href: "services.html", label: "Services" },
-    { href: "contact.html", label: "Contact" },
+    { href: "/", label: "Home" },
+    { href: "/about/", label: "About" },
+    { href: "/services/", label: "Services" },
+    { href: "/contact/", label: "Contact" },
     { href: "https://www.edversity.com.pk", label: "Visit Edversity", external: true }
   ];
-  const logoHeaderSrc = "assets/images/white background logo.png";
-  const logoFooterSrc = "assets/images/dark background logo.png";
+  const logoHeaderSrc = "/assets/images/white background logo.png";
+  const logoFooterSrc = "/assets/images/dark background logo.png";
   const logoAlt = "Edversity Consulting";
 
-  function getCurrentPath() {
-    const path = window.location.pathname.split("/").pop();
-    return path || "index.html";
+  function normalizeRoute(pathname) {
+    let path = pathname || "/";
+    path = path.split("#")[0].split("?")[0];
+
+    if (path.endsWith("/index.html")) {
+      path = path.slice(0, -"/index.html".length) || "/";
+    } else if (path === "/index.html") {
+      path = "/";
+    } else if (path.endsWith(".html")) {
+      path = path.slice(0, -".html".length);
+    }
+
+    if (!path.startsWith("/")) {
+      path = "/" + path;
+    }
+
+    if (path !== "/" && !path.endsWith("/")) {
+      path += "/";
+    }
+
+    return path;
+  }
+
+  function getCurrentRoute() {
+    return normalizeRoute(window.location.pathname);
   }
 
   function navLinksMarkup(className) {
     return navItems
       .map(function (item) {
-        const pathAttr = item.external ? "" : ' data-nav-path="' + item.href + '"';
+        const pathAttr = item.external ? "" : ' data-nav-route="' + item.href + '"';
         const externalAttrs = item.external ? ' target="_blank" rel="noopener noreferrer"' : "";
         return '<a class="' + className + '"' + pathAttr + ' href="' + item.href + '"' + externalAttrs + ">" + item.label + "</a>";
       })
@@ -37,14 +59,14 @@
       '<header class="site-header" data-site-header>' +
       '  <div class="container">' +
       '    <div class="nav-shell">' +
-      '      <a class="brand" href="index.html" aria-label="Edversity Consulting home">' +
+      '      <a class="brand" href="/" aria-label="Edversity Consulting home">' +
       '        <img class="brand-logo" src="' + logoHeaderSrc + '" alt="' + logoAlt + '">' +
       "      </a>" +
       '      <nav class="desktop-nav" aria-label="Primary">' +
       navLinksMarkup("nav-link") +
       "      </nav>" +
       '      <div class="nav-cta">' +
-      '        <a class="btn btn-primary btn-sm" href="apply.html">Apply Now</a>' +
+      '        <a class="btn btn-primary btn-sm" href="/apply/">Apply Now</a>' +
       "      </div>" +
       '      <button class="nav-toggle" data-nav-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">' +
       '        <span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>' +
@@ -52,14 +74,14 @@
       "    </div>" +
       '    <nav class="mobile-nav" id="mobile-nav" data-mobile-nav hidden aria-label="Mobile primary">' +
       navLinksMarkup("nav-link") +
-      '      <a class="btn btn-primary btn-sm" href="apply.html">Apply Now</a>' +
+      '      <a class="btn btn-primary btn-sm" href="/apply/">Apply Now</a>' +
       "    </nav>" +
       "  </div>" +
       "</header>";
 
-    const current = getCurrentPath();
-    mount.querySelectorAll("[data-nav-path]").forEach(function (link) {
-      if (link.getAttribute("data-nav-path") === current) {
+    const current = getCurrentRoute();
+    mount.querySelectorAll("[data-nav-route]").forEach(function (link) {
+      if (link.getAttribute("data-nav-route") === current) {
         link.classList.add("is-active");
         link.setAttribute("aria-current", "page");
       }
@@ -104,8 +126,8 @@
       return;
     }
 
-    mount.innerHTML = '<a class="btn btn-primary mobile-apply" href="apply.html">Apply Now</a>';
-    document.body.classList.add("page-has-mobile-cta");
+    mount.innerHTML = "";
+    document.body.classList.remove("page-has-mobile-cta");
   }
 
   function renderFooter() {
@@ -122,30 +144,30 @@
       '<footer class="footer">' +
       '  <div class="container footer-main" data-animate>' +
       '    <div class="footer-brand-col stack-4">' +
-      '      <a class="brand footer-brand" href="index.html"><img class="brand-logo brand-logo-footer" src="' + logoFooterSrc + '" alt="' + logoAlt + '"></a>' +
+      '      <a class="brand footer-brand" href="/"><img class="brand-logo brand-logo-footer" src="' + logoFooterSrc + '" alt="' + logoAlt + '"></a>' +
       '      <p class="footer-lead">Your journey to global education, professionally managed with precision.</p>' +
       '      <div class="footer-social">' +
-      '        <a class="social-link" href="' + (social.instagram || "#") + '" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="" aria-hidden="true"></a>' +
-      '        <a class="social-link" href="' + (social.linkedin || "#") + '" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="assets/icons/linkedin.svg" alt="" aria-hidden="true"></a>' +
+      '        <a class="social-link" href="' + (social.instagram || "#") + '" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="/assets/icons/instagram.svg" alt="" aria-hidden="true"></a>' +
+      '        <a class="social-link" href="' + (social.linkedin || "#") + '" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="/assets/icons/linkedin.svg" alt="" aria-hidden="true"></a>' +
       "      </div>" +
       "    </div>" +
       '    <div class="footer-nav-cols">' +
       '      <div class="footer-col">' +
       '        <h4 class="footer-col-title">Explore</h4>' +
       '        <ul class="footer-list">' +
-      '          <li><a href="index.html">Home</a></li>' +
-      '          <li><a href="about.html">About</a></li>' +
-      '          <li><a href="services.html">Services</a></li>' +
-      '          <li><a href="contact.html">Contact</a></li>' +
+      '          <li><a href="/">Home</a></li>' +
+      '          <li><a href="/about/">About</a></li>' +
+      '          <li><a href="/services/">Services</a></li>' +
+      '          <li><a href="/contact/">Contact</a></li>' +
       '          <li><a href="https://www.edversity.com.pk" target="_blank" rel="noopener noreferrer">Visit Edversity</a></li>' +
       "        </ul>" +
       "      </div>" +
       '      <div class="footer-col">' +
       '        <h4 class="footer-col-title">Contact</h4>' +
       '        <ul class="footer-list footer-contact-list">' +
-      '          <li><a class="footer-contact-link" data-office-email href="mailto:' + officeEmail + '"><span class="footer-link-icon"><img src="assets/icons/mail.svg" alt="" aria-hidden="true"></span><span data-office-email-text>' + officeEmail + "</span></a></li>" +
-      '          <li><a class="footer-contact-link" href="' + whatsAppUrl + '" target="_blank" rel="noopener noreferrer"><span class="footer-link-icon"><img src="assets/icons/whatsapp.svg" alt="" aria-hidden="true"></span><span>WhatsApp</span></a></li>' +
-      '          <li><a class="footer-contact-link" href="apply.html"><span class="footer-link-icon"><img src="assets/icons/calendar.svg" alt="" aria-hidden="true"></span><span>Apply Now</span></a></li>' +
+      '          <li><a class="footer-contact-link" data-office-email href="mailto:' + officeEmail + '"><span class="footer-link-icon"><img src="/assets/icons/mail.svg" alt="" aria-hidden="true"></span><span data-office-email-text>' + officeEmail + "</span></a></li>" +
+      '          <li><a class="footer-contact-link" href="' + whatsAppUrl + '" target="_blank" rel="noopener noreferrer"><span class="footer-link-icon"><img src="/assets/icons/whatsapp.svg" alt="" aria-hidden="true"></span><span>WhatsApp</span></a></li>' +
+      '          <li><a class="footer-contact-link" href="/apply/"><span class="footer-link-icon"><img src="/assets/icons/calendar.svg" alt="" aria-hidden="true"></span><span>Apply Now</span></a></li>' +
       "        </ul>" +
       "      </div>" +
       "    </div>" +
@@ -179,7 +201,7 @@
         "      <p>" + text + "</p>" +
         "    </div>" +
         '    <div class="cta-row">' +
-        '      <a class="btn btn-primary btn-wide" href="apply.html">Apply Now</a>' +
+        '      <a class="btn btn-primary btn-wide" href="/apply/">Apply Now</a>' +
         "    </div>" +
         "  </div>" +
         "</div>";
